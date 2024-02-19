@@ -1,0 +1,51 @@
+<template>
+    <template lwc:if={isValidProfile}>
+        <template lwc:if={showChoicePage}>
+            <lightning-card>
+                <div class="slds-m-around_medium">
+                    <abbr class="slds-required slds-text-title_bold radio-label" title="required">*</abbr>
+                    <label for="radioOptions" class="radio-label slds-text-title_bold">{label.SelectAnOption}</label>
+                    <div>
+                        <lightning-radio-group name="choiceSelection"
+                            variant="label-hidden"
+                            options={caseOptions}
+                            value={radioValue}
+                            type="radio"
+                            onchange={radioChangeHandler}
+                            id="radioOptions"
+                            required></lightning-radio-group>
+                    </div>
+                </div>
+                <div slot="footer" class="slds-clearfix">
+                    <lightning-button 
+                        variant="brand" 
+                        label="Next" 
+                        onclick={nextHandler} 
+                        disabled={nextDisabled}
+                        class="slds-var-m-left_x-small slds-float_right"></lightning-button></div>
+            </lightning-card>
+        </template>
+
+        <template lwc:if={showFlowCard}>
+            <lightning-card variant="narrow">
+                <template lwc:if={flowCardHeaderValue}>
+                    <div class="slds-text-heading_medium slds-text-align_center"><b>{flowCardHeader}</b></div>
+                </template>
+                <div class="slds-p-around_medium">
+                    <template lwc:if={showWarrantyRegistrationFlow}>
+                        <lightning-flow flow-api-name={flowApiNames.warrantyRegistrationFlow}
+                            flow-input-variables={warrantyRegistrationInputVariables}
+                            onstatuschange={warrantyRegistrationStatusChangeHandler}>
+                        </lightning-flow> 
+                    </template>
+                    <template lwc:if={showCancelButton}>
+                        <div slot="footer" style="margin-top: -2.51rem;">
+                            <lightning-button label='Cancel' variant='neutral' title='Cancel' onclick={backHandler}>
+                            </lightning-button>
+                        </div>
+                    </template>
+                </div>
+            </lightning-card>
+        </template>
+    </template>
+</template>

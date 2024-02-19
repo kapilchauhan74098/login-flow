@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+	<apiVersion>57.0</apiVersion>
+	<isExposed>false</isExposed>
+	<masterLabel>KIService_CaseNewButton</masterLabel>
+	<description>Used for Kohler India Service implementation</description>
+</LightningComponentBundle>
